@@ -108,7 +108,7 @@ countdown('{{$time}}');
             </nav>
         </div>  
          <div class="col-md-6 offset-md-3 m-4" style="background-color: white">
-            
+        
         @foreach($questions as $question)
             <div class="col-md-6 col-lg-8 col-sm-6 col-lg-offset-2">
                 <form method="post" action="{{route('answer.store')}}" class="ansform">

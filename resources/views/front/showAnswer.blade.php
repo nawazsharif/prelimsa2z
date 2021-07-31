@@ -76,7 +76,7 @@
                           <div class="form-group">
                             <tr class="bg-success">
                               <td><strong>Answer : </strong></td>
-                              <td><input name="answer" class="form-control" value="{{$question->true_answer}}" type="text" readonly></td>
+                              <td><input name="answer" class="form-control" value="{{$question->answer}}" type="text" readonly></td>
                             </tr>
                           </div>
                           </tbody>
