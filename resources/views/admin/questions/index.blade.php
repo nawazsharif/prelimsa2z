@@ -59,7 +59,7 @@
                                 {{ $question->id ?? '' }}
                             </td>
                             <td>
-                                {{ $question->quiz->question_lenth ?? '' }}
+                                {{ $question->quiz->unique ?? '' }}
                             </td>
                             <td>
                                 {{ $question->question ?? '' }}

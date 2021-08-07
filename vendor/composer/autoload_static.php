@@ -16,6 +16,8 @@ class ComposerStaticInit758547e09280a492b864e8dd3102a759
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
@@ -30,12 +32,10 @@ class ComposerStaticInit758547e09280a492b864e8dd3102a759
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -555,6 +555,7 @@ class ComposerStaticInit758547e09280a492b864e8dd3102a759
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\AdminCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminCheck.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -1799,6 +1800,7 @@ class ComposerStaticInit758547e09280a492b864e8dd3102a759
         'Illuminate\\Broadcasting\\Broadcasters\\UsePusherChannelConventions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/Broadcasters/UsePusherChannelConventions.php',
         'Illuminate\\Broadcasting\\Channel' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/Channel.php',
         'Illuminate\\Broadcasting\\EncryptedPrivateChannel' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/EncryptedPrivateChannel.php',
+        'Illuminate\\Broadcasting\\InteractsWithBroadcasting' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/InteractsWithBroadcasting.php',
         'Illuminate\\Broadcasting\\InteractsWithSockets' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/InteractsWithSockets.php',
         'Illuminate\\Broadcasting\\PendingBroadcast' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php',
         'Illuminate\\Broadcasting\\PresenceChannel' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/PresenceChannel.php',
