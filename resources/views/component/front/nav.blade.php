@@ -9,15 +9,16 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         @if(auth()->check() && auth()->user()->is_admin ==1)
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('admin.home')}}">Dashboard</a></li>
-                        
+
                         @endif
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('student.dashboard')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 @if(request()->route()->getName() == 'student.dashboard'){{__('active')}}@endif" href="{{route('student.dashboard')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 @if(request()->route()->getName() == 'student.courses'){{__('active')}}@endif" href="{{route('student.courses')}}">Courses</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
                         @if(auth()->check())
                         <li class="nav-item">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -31,7 +32,7 @@
                                 @else
                                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('login')}}">Login</a></li>
                                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('register')}}">SignUp</a></li>
-                       
+
                         @endif
                     </ul>
                 </div>

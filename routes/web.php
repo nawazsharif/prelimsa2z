@@ -26,10 +26,11 @@ use App\Http\Controllers\Admin\QuestionsController;
 Auth::routes();
 
 Route::get('/', [StudentController::class,'index'])->name('student.dashboard');
+Route::get('/courses', [StudentController::class,'courses'])->name('student.courses');
 Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.home');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','is_admin']], function () {
-   
+
     // Course
     Route::delete('courses/destroy', [CourseController::class,'massDestroy'])->name('courses.massDestroy');
     Route::resource('courses', CourseController::class);
@@ -40,6 +41,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','is
     // Questions
     Route::delete('questions/destroy', [QuestionsController::class ,'massDestroy'])->name('questions.massDestroy');
     Route::resource('questions', QuestionsController::class);
+    Route::get('quizes/{quiz}/questions',[QuizController::class,'questionList'])->name('admin.quizzes.questions');
+    Route::get('quizes/{quiz}/questions/create',[QuizController::class,'questionCreate'])->name('admin.quiz.questions.create');
+
+
 });
 Route::get('/course/{course}', [StudentController::class ,'display'])->name('student.display');
 

@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-
+@php
+    $uniqueId = 'QZ'. App\Models\Quiz::latest()->pluck('id')->first() + 1;
+@endphp
     <div class="card">
         <div class="card-header">
             {{ trans('global.create') }} {{ trans('cruds.quiz.title_singular') }}
@@ -31,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label class="required" for="unique">{{ trans('cruds.quiz.fields.unique') }}</label>
-                    <input class="form-control {{ $errors->has('unique') ? 'is-invalid' : '' }}" type="text" name="unique" id="unique" value="{{ old('unique', '') }}" required>
+                    <input class="form-control {{ $errors->has('unique') ? 'is-invalid' : '' }}" type="text" name="unique" id="unique" value="{{ $uniqueId ??old('unique', '') }}" required>
                     @if($errors->has('unique'))
                         <span class="text-danger">{{ $errors->first('unique') }}</span>
                     @endif
@@ -55,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label for="status">{{ trans('cruds.quiz.fields.status') }}</label>
-                    <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', '') }}" step="1">
+                    <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ 1 ?? old('status', '') }}" step="1">
                     @if($errors->has('status'))
                         <span class="text-danger">{{ $errors->first('status') }}</span>
                     @endif

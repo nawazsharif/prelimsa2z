@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroyQuizRequest;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
 use App\Models\Course;
+use App\Models\Question;
 use App\Models\Quiz;
 use Gate;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class QuizController extends Controller
 
     public function create()
     {
-        
+
         $courses = Course::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.quizzes.create', compact('courses'));
@@ -71,5 +72,15 @@ class QuizController extends Controller
         Quiz::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+    public function questionList(Quiz $quiz)
+    {
+        $questions = Question::where('quiz_id', $quiz->id)->get();
+        return view('admin.quizzes.question-list', compact('questions','quiz'));
+    }
+    public function questionCreate(Quiz $quiz)
+    {
+        $quizzes = $quiz;
+        return view('admin.quizzes.question-create', compact('quizzes'));
     }
 }

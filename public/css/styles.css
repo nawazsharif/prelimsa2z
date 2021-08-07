@@ -10812,3 +10812,7 @@ header.masthead .site-heading .h1 {
     font-size: 2.25rem;
   }
 }
+a.nav-link.px-lg-3.py-3.py-lg-4.active {
+    background: rebeccapurple !important;
+    color: #fff !important;
+}

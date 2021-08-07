@@ -23,7 +23,7 @@
     </head>
     <body>
         @include('component.front.nav')
-        @include('component.front.header')
+
         @yield('content')
         <!-- Footer-->
         <footer class="border-top">

@@ -1,45 +1,48 @@
 @extends('layouts.admin')
 @section('content')
-        <div style="margin-bottom: 10px;" class="row">
-            <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route('admin.quizzes.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.quiz.title_singular') }}
-                </a>
-            </div>
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ url('/admin/quizes/'.$quiz->id.'/questions/create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.question.title_singular') }}
+            </a>
         </div>
+    </div>
     <div class="card">
         <div class="card-header">
-            {{ trans('cruds.quiz.title_singular') }} {{ trans('global.list') }}
+            {{ trans('cruds.question.title_singular') }} {{ trans('global.list') }}
         </div>
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-Quiz">
+                <table class=" table table-bordered table-striped table-hover datatable datatable-Question">
                     <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.id') }}
+                            {{ trans('cruds.question.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.title') }}
+                            {{ trans('cruds.question.fields.quiz') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.course') }}
+                            {{ trans('cruds.question.fields.question') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.question_lenth') }}
+                            {{ trans('cruds.question.fields.choice_1') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.unique') }}
+                            {{ trans('cruds.question.fields.choice_2') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.time') }}
+                            {{ trans('cruds.question.fields.choice_3') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quiz.fields.status') }}
+                            {{ trans('cruds.question.fields.choice_4') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.question.fields.answer') }}
                         </th>
                         <th>
                             &nbsp;
@@ -47,47 +50,47 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($quizzes as $key => $quiz)
-                        <tr data-entry-id="{{ $quiz->id }}">
+                    @foreach($questions as $key => $question)
+                        <tr data-entry-id="{{ $question->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $quiz->id ?? '' }}
+                                {{ $question->id ?? '' }}
                             </td>
                             <td>
-                                {{ $quiz->title ?? '' }}
+                                {{ $question->quiz->unique ?? '' }}
                             </td>
                             <td>
-                                {{ $quiz->course->title ?? '' }}
+                                {{ $question->question ?? '' }}
                             </td>
                             <td>
-                                {{ $quiz->question_lenth ?? '' }}
+                                {{ $question->choice_1 ?? '' }}
                             </td>
                             <td>
-                                {{ $quiz->unique ?? '' }}
+                                {{ $question->choice_2 ?? '' }}
                             </td>
                             <td>
-                                {{ $quiz->time ?? '' }}
+                                {{ $question->choice_3 ?? '' }}
                             </td>
                             <td>
-                                {{ $quiz->status ?? '' }}
+                                {{ $question->choice_4 ?? '' }}
                             </td>
                             <td>
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.quizzes.show', $quiz->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.quizzes.edit', $quiz->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                    <form action="{{ route('admin.quizzes.destroy', $quiz->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                    <a class="btn btn-xs btn-info" href="{{ url('/admin/quizes/'.$quiz->id.'/questions') }}">
-                                        {{ trans('questions') }}
-                                    </a>
+                                {{ $question->answer ?? '' }}
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-primary" href="{{ route('admin.questions.show', $question->id) }}">
+                                    {{ trans('global.view') }}
+                                </a>
+                                <a class="btn btn-xs btn-info" href="{{ route('admin.questions.edit', $question->id) }}">
+                                    {{ trans('global.edit') }}
+                                </a>
+                                <form action="{{ route('admin.questions.destroy', $question->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                </form>
 
                             </td>
 
@@ -107,11 +110,11 @@
     <script>
         $(function () {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-            @can('quiz_delete')
+            @can('question_delete')
             let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
             let deleteButton = {
                 text: deleteButtonTrans,
-                url: "{{ route('admin.quizzes.massDestroy') }}",
+                url: "{{ route('admin.questions.massDestroy') }}",
                 className: 'btn-danger',
                 action: function (e, dt, node, config) {
                     var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -142,7 +145,7 @@
                 order: [[ 1, 'desc' ]],
                 pageLength: 100,
             });
-            let table = $('.datatable-Quiz:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+            let table = $('.datatable-Question:not(.ajaxTable)').DataTable({ buttons: dtButtons })
             $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
                 $($.fn.dataTable.tables(true)).DataTable()
                     .columns.adjust();

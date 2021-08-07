@@ -91,16 +91,16 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route("admin.questions.index") }}" class="nav-link {{ request()->is("admin/questions") || request()->is("admin/questions/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route("admin.questions.index") }}" class="nav-link {{ request()->is("admin/questions") || request()->is("admin/questions/*") ? "active" : "" }}">--}}
+{{--                            <i class="fa-fw nav-icon fas fa-cogs">--}}
 
-                            </i>
-                            <p>
-                                {{ trans('Question') }}
-                            </p>
-                        </a>
-                    </li>
+{{--                            </i>--}}
+{{--                            <p>--}}
+{{--                                {{ trans('Question') }}--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                 @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">

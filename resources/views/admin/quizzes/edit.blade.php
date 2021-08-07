@@ -30,14 +30,14 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.quiz.fields.question_lenth_helper') }}</span>
                 </div>
-                <div class="form-group">
-                    <label class="required" for="unique">{{ trans('cruds.quiz.fields.unique') }}</label>
-                    <input class="form-control {{ $errors->has('unique') ? 'is-invalid' : '' }}" type="text" name="unique" id="unique" value="{{ old('unique', $quiz->unique) }}" required>
-                    @if($errors->has('unique'))
-                        <span class="text-danger">{{ $errors->first('unique') }}</span>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.quiz.fields.unique_helper') }}</span>
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <label class="required" for="unique">{{ trans('cruds.quiz.fields.unique') }}</label>--}}
+{{--                    <input class="form-control {{ $errors->has('unique') ? 'is-invalid' : '' }}" type="text" name="unique" id="unique" value="{{ old('unique', $quiz->unique) }}" required>--}}
+{{--                    @if($errors->has('unique'))--}}
+{{--                        <span class="text-danger">{{ $errors->first('unique') }}</span>--}}
+{{--                    @endif--}}
+{{--                    <span class="help-block">{{ trans('cruds.quiz.fields.unique_helper') }}</span>--}}
+{{--                </div>--}}
                 <div class="form-group">
                     <label class="required" for="title">{{ trans('cruds.quiz.fields.title') }}</label>
                     <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('unique', $quiz->title) }}" required>

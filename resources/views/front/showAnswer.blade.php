@@ -7,9 +7,10 @@
 @endsection
 
 @section('content')
+    @include('component.front.subHeader',['title'=>'Exam','desc'=>'Participate and Enjoy!!'])
 <body style="background-color: #63e9ab">
     <div class="container">
-        <h2 style="text-align: center;">Review Question</strong></h2>
+        <h2 style="text-align: center;"><strong>Review Question</strong></h2>
 
         @php
         $correct_ans = $questions->filter(function ($item) {
@@ -24,7 +25,7 @@
         <p>Wrong Ans: {{$wrong_ans->count()}}</p>
 
 
-        <p>Mark : {{$result}}</p> 
+        <p>Mark : {{$result}}</p>
   		@foreach($questions as $question)
             <div class="">
                     <div class="">
@@ -36,7 +37,7 @@
                         <table class="table bg-warning">
                           <tbody>
                             <div class="form-group">
-                                
+
                             <tr class="bg-warning">
                               <td><strong>Question : </strong></td>
                               <td><input type="text" class="form-control" name="question" value="{{$question->question}}" readonly></td>
@@ -45,7 +46,7 @@
                             </div>
 
                             <div class="form-group">
-                            
+
                             <tr class="@if($question->given_answer ==$question->choice_1){{__('bg-danger')}}@else{{__('bg-warning')}}@endif">
                               <td><strong>Choice1 : </strong></td>
                               <td><input name="choice1" class="form-control"  value="{{$question->choice_1}}" type="text" readonly></td>
@@ -82,7 +83,7 @@
                           </tbody>
                         </table>
                     </div>
-                
+
             </div><br>
          @endforeach
 

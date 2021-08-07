@@ -20,6 +20,7 @@ class StoreQuizRequest extends FormRequest
                 'max:2147483647',
             ],
             'unique' => [
+                'unique:quizes',
                 'string',
                 'required',
             ],

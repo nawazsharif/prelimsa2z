@@ -16,7 +16,7 @@ class QuestionsController extends Controller
 {
     public function index()
     {
-        
+
         $questions = Question::with(['quiz'])->get();
 
         return view('admin.questions.index', compact('questions'));
@@ -33,12 +33,12 @@ class QuestionsController extends Controller
     {
         $question = Question::create($request->all());
 
-        return redirect()->route('admin.questions.index');
+        return redirect()->route('admin.quizzes.questions',[$request->quiz_id]);
     }
 
     public function edit(Question $question)
     {
-        
+
         $quizzes = Quiz::all()->pluck('question_lenth', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $question->load('quiz');
@@ -55,7 +55,7 @@ class QuestionsController extends Controller
 
     public function show(Question $question)
     {
-        
+
         $question->load('quiz');
 
         return view('admin.questions.show', compact('question'));

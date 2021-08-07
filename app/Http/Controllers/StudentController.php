@@ -18,7 +18,10 @@ class StudentController extends Controller
         $courses = Course::all();
         return view('front.dashboard',\compact('courses'));
     }
-
+    public function courses(){
+        $courses = Course::all();
+        return view('front.course-list',\compact('courses'));
+    }
 
     public function display(Course $course)
     {
